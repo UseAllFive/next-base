@@ -1,0 +1,8 @@
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+/.vscode
+.history/
+.next
+node_modules
+.env
