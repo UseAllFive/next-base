@@ -7,8 +7,6 @@ const isServer = typeof window === 'undefined'
 const _cache = {}
 let _cachedAPI = false
 
-const getCategoryIdBySlug = async (context, slug, categoryType) => {}
-
 const getDisciplines = async (context) => {
     return await getEntryAPI({
         multiple: true,

@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import { getEntryAPI } from '../utils/prismic'
-import { RichText } from 'prismic-reactjs'
-import { linkResolver } from '../utils/link-resolver'
 import Prismic from 'prismic-javascript'
 
 const Work = ({ data }) => {
