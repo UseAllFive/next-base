@@ -3,6 +3,7 @@ import { getEntryAPI } from '../utils/prismic'
 import { RichText } from 'prismic-reactjs'
 import { linkResolver } from '../utils/link-resolver'
 import { Hero } from '../components/hero'
+import { H1Text } from '../typography'
 
 const Home = ({ data }) => {
     const page = data.data
@@ -13,6 +14,7 @@ const Home = ({ data }) => {
 
     return (
         <div>
+            <H1Text as="h1">Homepage:</H1Text>
             <Hero onClick={clicked} title={RichText.render(page.headline, linkResolver)}></Hero>
             <Link href="/work" prefetch>
                 <a>Work</a>

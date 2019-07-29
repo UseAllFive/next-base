@@ -1,0 +1,56 @@
+html {
+    font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    font-size: 100%;
+    font-family: 'TradeGothic LT Regular', sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+    margin: 0;
+    font-size: 1rem;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+strong,
+.bold,
+b {
+    font-family: 'TradeGothic LT Bold';
+}
+
+em,
+.i {
+    font-style: italic;
+}
+
+.caps {
+    text-transform: uppercase;
+}
+
+.lower {
+    text-transform: lowercase;
+}
+
+.no-under {
+    text-decoration: none;
+}
