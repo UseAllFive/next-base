@@ -1,71 +1,60 @@
-const colors = {
-    black: '#000',
-    white: '#FFF',
-    gray: '#979797',
-    blue: ['#DAEBFE', '#2774AE', '#005587'],
-    yellow: '#FFD100',
-    red: 'F00',
-}
+const pxtorem = (px) => `${px / 16}rem`
+const fontSizes = [pxtorem(18), pxtorem(22), pxtorem(30), pxtorem(45), pxtorem(75)]
+const letterSpacings = [pxtorem(-1), pxtorem(-0.75), pxtorem(-0.5), pxtorem(-0.25)]
 
 const theme = {
-    breakpoints: ['40em', '52em', '64em', '75em', '87em'],
-    fontSizes: [12, 14, 16, 20, 24, 32, 48, 55, 64],
-    space: [0, 4, 8, 20, 30, 54, 73, 128, 194, 256],
+    fontSizes: fontSizes,
+    letterSpacings: letterSpacings,
+    space: [
+        pxtorem(0),
+        pxtorem(20),
+        pxtorem(40),
+        pxtorem(60),
+        pxtorem(80),
+        pxtorem(100),
+        pxtorem(120),
+        pxtorem(140),
+        pxtorem(160),
+        pxtorem(180),
+        pxtorem(200),
+    ],
     fonts: {
-        regularItalic: 'karbon-regular-italic',
-        medium: 'karbon-medium',
-        mediumItalic: 'karbon-medium-italic',
-        semibold: 'karbon-semibold',
-        boldItalic: 'karbon-bold-italic',
+        regular: 'untitled-sans',
+        medium: 'untitled-sans-medium',
     },
-    maxWidths: [760, 900, 1100, 1355],
     colors: {
-        black: '#000',
+        black: ['#191919', '#000'],
+        gray: ['#EDEDED', '#666'],
         white: '#FFF',
-        blue: ['#DAEBFE', '#2774AE', '#005587', '#98BEDA'],
-        yellow: '#FFD100',
+        green: '#00FF86',
+        red: '#FF553B',
     },
-    buttons: {
-        border: {
-            border: '1px solid currentColor',
-            color: colors.blue[2],
-            transition: 'all 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946)',
-            '&:hover': {
-                color: colors.white,
-                background: colors.blue[2],
-                border: `1px solid ${colors.blue[2]}`,
-            },
+    sizes: [1284],
+    textStyles: {
+        h1: {
+            fontSize: fontSizes[4],
+            letterSpacing: letterSpacings[2],
+            lineHeight: 1.1066666667,
         },
-        blue: {
-            border: `1px solid ${colors.blue[2]}`,
-            background: colors.blue[2],
-            color: colors.white,
-            transition: 'all 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946)',
-            '&:hover': {
-                color: colors.blue[2],
-                background: colors.white,
-            },
+        h2: {
+            fontSize: fontSizes[3],
+            letterSpacing: letterSpacings[2],
+            lineHeight: 1.3111111111,
         },
-        white: {
-            background: colors.white,
-            color: colors.blue[2],
-            transition: 'all 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946)',
-            '&:hover': {
-                color: colors.white,
-                background: colors.blue[2],
-            },
+        body: {
+            fontSize: fontSizes[2],
+            letterSpacing: letterSpacings[2],
+            lineHeight: 1.5,
         },
-        yellow: {
-            background: colors.yellow,
-            color: colors.blue[2],
-            transition: 'all 0.3s cubic-bezier(0.465, 0.183, 0.153, 0.946)',
-            '&:hover': {
-                color: colors.yellow,
-                background: colors.blue[2],
-            },
+        bodySmall: {
+            fontSize: fontSizes[0],
+            letterSpacing: letterSpacings[3],
+        },
+        subheadline: {
+            fontSize: fontSizes[1],
+            letterSpacing: letterSpacings[3],
         },
     },
-    letterSpacings: [1.6, 5.56, 7.64],
 }
 
 export { theme }
