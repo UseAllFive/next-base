@@ -1,4 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document'
+import useragent from 'useragent'
 import { ServerStyleSheet } from 'styled-components'
 import { PRISMIC_API_URL } from '../config'
 
@@ -40,6 +41,9 @@ export default class MyDocument extends Document {
         return (
             <html lang="en">
                 <Head>
+                    {useragent.family === 'IE' && ( // IE only, not Edge or others
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />
+                    )}
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                     <script dangerouslySetInnerHTML={this.setPrismic()} />
                     <script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js" />
