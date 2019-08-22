@@ -5,55 +5,64 @@ import App, { Container } from 'next/app'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import { ThemeProvider } from 'styled-components'
+import t from 'typy'
 import { theme } from '../styles/theme'
 import { Header } from '../components/header'
 import { Footer } from '../components/footer'
-import t from 'typy'
 import { Metadata } from '../components/metadata'
-import * as gtag from '../utils/gtag'
 
 NProgress.configure({ showSpinner: false })
 
 Router.events.on('routeChangeStart', () => NProgress.start())
-Router.events.on('routeChangeComplete', (url) => {
+Router.events.on('routeChangeComplete', () => {
     NProgress.done()
-    gtag.pageview(url)
 })
 Router.events.on('routeChangeError', () => NProgress.done())
 
 export default class MyApp extends App {
+    static async getInitialProps({ Component, ctx: context }) {
+        let pageProps = {}
+
+        if (Component.getInitialProps) {
+            pageProps = await Component.getInitialProps(context)
+        }
+
+        if (!pageProps.pageData) {
+            // eslint-disable-next-line no-param-reassign
+            context.res.statusCode = 404
+        }
+
+        return { pageProps }
+    }
+
     render() {
         const { Component, pageProps } = this.props
 
         // Get metadata information
-        let meta_description, meta_title, meta_image, meta_image_url
+        let metaDescription
+        let metaTitle
+        let metaImage
+        let metaImageURL
         if (t(pageProps, 'pageData.data').safeObject) {
             const { pageData } = pageProps
             const { data } = pageData
-            ;({ meta_image, meta_description, meta_title } = data)
-            meta_image_url = t(meta_image, 'url').safeObject
-            // Fall back intelligently if no meta data is defined
-            switch (pageData.type) {
-                case 'event':
-                case 'timeline_node':
-                case 'post':
-                    if (!meta_title) meta_title = data.title
-                    if (!meta_description) meta_description = data.excerpt
-                    if (!meta_image_url) meta_image_url = t(data, 'image.url').safeObject
-                    break
-            }
+            ;({ meta_image: metaImage, meta_description: metaDescription, meta_title: metaTitle } = data)
+            metaImageURL = t(metaImage, 'url').safeObject
+            if (!metaTitle) metaTitle = data.title
+            if (!metaDescription) metaDescription = data.excerpt
+            if (!metaImageURL) metaImageURL = t(data, 'image.url').safeObject
         }
 
         return (
             <>
                 {/* Should handle metadata for all pages w/ sensible defaults */}
-                <Metadata title={meta_title} description={meta_description} image={meta_image_url} />
+                <Metadata title={metaTitle} description={metaDescription} image={metaImageURL} />
                 <ThemeProvider theme={theme}>
                     <Container>
                         <Header />
-                        <div id="ada-content-begin">
+                        <main id="ada-content-begin">
                             <Component {...pageProps} />
-                        </div>
+                        </main>
                         <Footer />
                     </Container>
                 </ThemeProvider>

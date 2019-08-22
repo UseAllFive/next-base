@@ -1,7 +1,22 @@
-/* 
-** Insert font-face definitions here 
-** ...
-*/
+@font-face {
+    font-family: 'untitled-sans';
+    src: url('/static/fonts/UntitledSansWeb-Regular');
+    src: url('/static/fonts/UntitledSansWeb-Regular?#iefix') format('embedded-opentype'),
+        url('/static/fonts/UntitledSansWeb-Regular.woff') format('woff'),
+        url('/static/fonts/UntitledSansWeb-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'untitled-sans-medium';
+    src: url('/static/fonts/UntitledSansWeb-Medium');
+    src: url('/static/fonts/UntitledSansWeb-Medium?#iefix') format('embedded-opentype'),
+        url('/static/fonts/UntitledSansWeb-Medium.woff') format('woff'),
+        url('/static/fonts/UntitledSansWeb-Medium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
 html {
     font-size: 12px;
@@ -10,17 +25,12 @@ html {
     font-family: 'untitled-sans', sans-serif;
 }
 
-@media screen and (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
 body {
     font-size: 100%;
     line-height: 1.5;
     font-weight: 400;
     -webkit-font-smoothing: antialiased;
+    padding-top: 67px;
 }
 
 h1,
@@ -64,4 +74,58 @@ em,
 
 .no-under {
     text-decoration: none;
+}
+
+svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+
+#nprogress .bar {
+    background: #fff;
+}
+
+#nprogress .spinner-icon {
+    border-top-color: #fff;
+    border-left-color: #fff;
+}
+
+button {
+    background: none;
+    border-radius: 0;
+    border: none;
+    appearance: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+input {
+    border: 0;
+    border-radius: 0;
+    background: none;
+    appearance: none;
+}
+
+@media screen and (min-width: 480px) {
+    body {
+        padding-top: 108px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    body {
+        padding-top: 121px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    body {
+        padding-top: 0;
+    }
 }

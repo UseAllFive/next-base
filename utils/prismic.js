@@ -7,24 +7,6 @@ const isServer = typeof window === 'undefined'
 const _cache = {}
 let _cachedAPI = false
 
-const getDisciplines = async (context) => {
-    return await getEntryAPI({
-        multiple: true,
-        fragment: 'document.type',
-        value: 'discipline',
-        context,
-    })
-}
-
-const getIndustries = async (context) => {
-    return await getEntryAPI({
-        multiple: true,
-        fragment: 'document.type',
-        value: 'industry',
-        context,
-    })
-}
-
 const getEntryAPI = async ({
     context,
     fragment,
@@ -37,13 +19,13 @@ const getEntryAPI = async ({
     try {
         // Allow user to add a completely different predicate
         let p
-        let cache_key
+        let cacheKey
         if (!customPredicate) {
             p = Prismic.Predicates.at(fragment, value)
-            cache_key = `${fragment}:${value}${Object.keys(options).length > 0 ? ':' + toParamsString(options) : ''}`
+            cacheKey = `${fragment}:${value}${Object.keys(options).length > 0 ? `:${toParamsString(options)}` : ''}`
         } else {
             p = customPredicate
-            cache_key = customPredicateKey
+            cacheKey = customPredicateKey
         }
         const cookies = getCookies(context)
         const ref = cookies['io.prismic.preview']
@@ -52,16 +34,35 @@ const getEntryAPI = async ({
                 accessToken: process.env.PRISMIC_ACCESS_TOKEN,
             })
         }
-        if (!_cache[cache_key] || isServer) {
+        if (!_cache[cacheKey] || isServer) {
             const response = await _cachedAPI.query(p, { ref, ...options })
-            _cache[cache_key] = multiple ? response.results : response.results[0]
+            _cache[cacheKey] = multiple ? response.results : response.results[0]
         }
 
-        return _cache[cache_key]
+        return _cache[cacheKey]
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error)
         return error
     }
+}
+
+const getDisciplines = async (context) => {
+    return getEntryAPI({
+        multiple: true,
+        fragment: 'document.type',
+        value: 'discipline',
+        context,
+    })
+}
+
+const getIndustries = async (context) => {
+    return getEntryAPI({
+        multiple: true,
+        fragment: 'document.type',
+        value: 'industry',
+        context,
+    })
 }
 
 export { getEntryAPI, getIndustries, getDisciplines }

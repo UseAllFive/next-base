@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import PropTypes from 'prop-types'
 import { DEFAULT_METADATA } from '../config'
 
 const Metadata = ({ title, description, image }) => {
@@ -23,6 +24,12 @@ const Metadata = ({ title, description, image }) => {
             <meta name="twitter:image" content={metaImage} />
         </Head>
     )
+}
+
+Metadata.propTypes = {
+    title: PropTypes.string,
+    description: PropTypes.string,
+    image: PropTypes.string,
 }
 
 export { Metadata }

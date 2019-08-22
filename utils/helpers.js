@@ -5,6 +5,12 @@ function toParamsString(params) {
     return queryString
 }
 
+const pxtorem = (px) => `${px / 16}rem`
+
+const sliceSpacing = [2, 3, 4, 5, 6]
+
 module.exports = {
     toParamsString,
+    pxtorem,
+    sliceSpacing,
 }
