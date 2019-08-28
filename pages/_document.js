@@ -22,6 +22,7 @@ export default class MyDocument extends Document {
                         {sheet.getStyleElement()}
                     </>
                 ),
+                ua: ctx.req ? ctx.req.headers['user-agent'] : navigator.userAgent,
             }
         } finally {
             sheet.seal()
@@ -39,9 +40,14 @@ export default class MyDocument extends Document {
     }
 
     render() {
+        const { ua } = this.props
+        const isIE = /MSIE (\d+\.\d+);/.test(ua) || ua.indexOf('Trident/') > -1
         return (
             <html lang="en">
                 <Head>
+                    {isIE && ( // IE only, not Edge or others
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />
+                    )}
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                     {/* eslint-disable-next-line react/no-danger */}
                     <script dangerouslySetInnerHTML={this.setPrismic()} />

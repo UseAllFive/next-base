@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types'
+/* eslint-disable react/prop-types */
 import { Link as Link2 } from 'prismic-reactjs'
 import Link from 'next/link'
 import { linkResolver } from '../utils/link-resolver'
 
-export const PrismicLink = ({ link, text }) => {
+export const PrismicLink = (props) => {
+    const { link, children } = props
     const href = Link2.url(link, linkResolver)
     let target = {}
     if (link.target) {
@@ -15,18 +16,13 @@ export const PrismicLink = ({ link, text }) => {
     if (link.link_type === 'Document') {
         return (
             <Link prefetch href={`/page?uid=${link.uid}`} as={href}>
-                <a>{text}</a>
+                <a>{children}</a>
             </Link>
         )
     }
     return (
         <a href={href} {...target}>
-            {text} ↗
+            {children} ↗
         </a>
     )
-}
-
-PrismicLink.propTypes = {
-    link: PropTypes.object.isRequired,
-    text: PropTypes.string.isRequired,
 }
