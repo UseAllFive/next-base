@@ -1,7 +1,10 @@
+import '@babel/polyfill'
+import '../polyfills/assign'
 import 'normalize.css'
 import 'nprogress/nprogress.css'
 import '../styles/global.css'
-import App, { Container } from 'next/app'
+import React from 'react'
+import App from 'next/app'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import { ThemeProvider } from 'styled-components'
@@ -58,13 +61,13 @@ export default class MyApp extends App {
                 {/* Should handle metadata for all pages w/ sensible defaults */}
                 <Metadata title={metaTitle} description={metaDescription} image={metaImageURL} />
                 <ThemeProvider theme={theme}>
-                    <Container>
+                    <>
                         <Header />
                         <main id="ada-content-begin">
                             <Component {...pageProps} />
                         </main>
                         <Footer />
-                    </Container>
+                    </>
                 </ThemeProvider>
             </>
         )
