@@ -18,7 +18,7 @@ const Metadata = ({ title, description, image }) => {
             <meta property="og:image" content={metaImage} />
             {/* Twitter */}
             <meta name="twitter:card" content="summary" />
-            <meta name="twitter:site" content="@calcharters" />
+            <meta name="twitter:site" content="@" />
             <meta name="twitter:title" content={metaTitle} />
             <meta name="twitter:description" content={metaDescription} />
             <meta name="twitter:image" content={metaImage} />
