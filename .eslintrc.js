@@ -22,6 +22,7 @@ module.exports = {
         $Diff: true,
     },
     rules: {
+        camelcase: 0,
         'react/forbid-prop-types': 0,
         'react/jsx-filename-extension': 0,
         'react/react-in-jsx-scope': 0,
@@ -37,6 +38,7 @@ module.exports = {
         'import/prefer-default-export': 0,
         'react/require-default-props': 0,
         'react/no-array-index-key': 0,
+        'react/jsx-props-no-spreading': 0,
         'max-len': ['error', 120],
         'object-curly-spacing': ['error', 'always'],
         semi: ['warn', 'never'],

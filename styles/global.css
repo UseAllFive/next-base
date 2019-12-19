@@ -1,19 +1,19 @@
 @font-face {
     font-family: 'untitled-sans';
-    src: url('/static/fonts/UntitledSansWeb-Regular');
-    src: url('/static/fonts/UntitledSansWeb-Regular?#iefix') format('embedded-opentype'),
-        url('/static/fonts/UntitledSansWeb-Regular.woff') format('woff'),
-        url('/static/fonts/UntitledSansWeb-Regular.woff2') format('woff2');
+    src: url('/fonts/UntitledSansWeb-Regular');
+    src: url('/fonts/UntitledSansWeb-Regular?#iefix') format('embedded-opentype'),
+        url('/fonts/UntitledSansWeb-Regular.woff') format('woff'),
+        url('/fonts/UntitledSansWeb-Regular.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'untitled-sans-medium';
-    src: url('/static/fonts/UntitledSansWeb-Medium');
-    src: url('/static/fonts/UntitledSansWeb-Medium?#iefix') format('embedded-opentype'),
-        url('/static/fonts/UntitledSansWeb-Medium.woff') format('woff'),
-        url('/static/fonts/UntitledSansWeb-Medium.woff2') format('woff2');
+    src: url('/fonts/UntitledSansWeb-Medium');
+    src: url('/fonts/UntitledSansWeb-Medium?#iefix') format('embedded-opentype'),
+        url('/fonts/UntitledSansWeb-Medium.woff') format('woff'),
+        url('/fonts/UntitledSansWeb-Medium.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }

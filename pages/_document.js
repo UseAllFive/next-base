@@ -40,15 +40,14 @@ export default class MyDocument extends Document {
     }
 
     render() {
-        const { ua } = this.props
-        const isIE = /MSIE (\d+\.\d+);/.test(ua) || ua.indexOf('Trident/') > -1
         return (
             <html lang="en">
                 <Head>
-                    {isIE && ( // IE only, not Edge or others
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.23.0/polyfill.min.js" />
-                    )}
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                    <meta name="robots" content="noindex, nofollow" />
+                    <link rel="manifest" href="/manifest.json" />
+                    <link rel="apple-touch-icon" href="/images/icons-192.png" />
+                    <meta name="theme-color" content="#000000" />
                     {/* eslint-disable-next-line react/no-danger */}
                     <script dangerouslySetInnerHTML={this.setPrismic()} />
                     <script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js" />
