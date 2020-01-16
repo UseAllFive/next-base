@@ -10,7 +10,7 @@ const Cookies = require('cookies')
 const Prismic = require('prismic-javascript')
 const compression = require('compression')
 const { linkResolver } = require('./utils/link-resolver')
-const { PRISMIC_API_URL } = require('./config')
+const { PRISMIC_API_URL } = require('./constants/prismic')
 
 // Force https
 const requireHTTPS = (req, res, _next) => {

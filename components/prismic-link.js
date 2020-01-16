@@ -1,9 +1,11 @@
-/* eslint-disable react/prop-types */
+// Takes a link from Prismic and generates an outbound anchor or an internal Next Link
+
 import PrismicDOM from 'prismic-dom'
 import Link from 'next/link'
+import PropTypes from 'prop-types'
 import { linkResolver } from '../utils/link-resolver'
 
-export const PrismicLink = (props) => {
+const PrismicLink = (props) => {
     const { link, children } = props
     const href = PrismicDOM.Link.url(link, linkResolver)
     let target = {}
@@ -26,3 +28,14 @@ export const PrismicLink = (props) => {
         </a>
     )
 }
+
+PrismicLink.propTypes = {
+    link: PropTypes.shape({
+        target: PropTypes.string,
+        link_type: PropTypes.string,
+        uid: PropTypes.string,
+    }),
+    children: PropTypes.any,
+}
+
+export { PrismicLink }

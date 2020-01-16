@@ -1,6 +1,7 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import { PRISMIC_API_URL } from '../config'
+import { PRISMIC_API_URL } from '../constants/prismic'
+import { GA_TRACKING_ID } from '../constants/analytics'
 
 export default class MyDocument extends Document {
     static async getInitialProps(ctx) {
@@ -51,6 +52,24 @@ export default class MyDocument extends Document {
                     {/* eslint-disable-next-line react/no-danger */}
                     <script dangerouslySetInnerHTML={this.setPrismic()} />
                     <script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js" />
+                    {/* Start Google Analytics */}
+                    {process.env.NODE_ENV === 'production' && (
+                        <>
+                            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`} />
+                            <script
+                                // eslint-disable-next-line react/no-danger
+                                dangerouslySetInnerHTML={{
+                                    __html: `
+                                        window.dataLayer = window.dataLayer || [];
+                                        function gtag(){dataLayer.push(arguments);}
+                                        gtag('js', new Date());
+                                        gtag('config', '${GA_TRACKING_ID}');
+                                    `,
+                                }}
+                            />
+                        </>
+                    )}
+                    {/* End Google Analytics */}
                 </Head>
                 <body>
                     <Main />

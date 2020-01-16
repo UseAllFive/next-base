@@ -1,6 +1,9 @@
+// Updates the metadata of the page on route change
+// Make sure you have defined sensible DEFAULT_METADATA
+
 import Head from 'next/head'
 import PropTypes from 'prop-types'
-import { DEFAULT_METADATA } from '../config'
+import { DEFAULT_METADATA } from '../constants/metadata'
 
 const Metadata = ({ title, description, image }) => {
     const metaTitle = title
