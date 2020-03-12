@@ -9,7 +9,7 @@ const port = process.env.PORT || 5000
 const Cookies = require('cookies')
 const Prismic = require('prismic-javascript')
 const compression = require('compression')
-const basicAuth = require('./basic-auth')
+const basicAuth = require('./utils/basic-auth')
 const { linkResolver } = require('./utils/link-resolver')
 const { PRISMIC_API_URL } = require('./constants/prismic')
 
