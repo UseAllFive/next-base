@@ -2,16 +2,11 @@ import Prismic from 'prismic-javascript'
 import getCookies from 'next-cookies'
 import { PRISMIC_API_URL } from '../constants/prismic'
 
-let _instance
-
 // Generates a singleton Prismic intstance
 const getPrismicApi = async () => {
-    if (!_instance) {
-        _instance = Prismic.api(PRISMIC_API_URL, {
-            accessToken: process.env.PRISMIC_ACCESS_TOKEN,
-        })
-    }
-    return _instance
+    return Prismic.getApi(PRISMIC_API_URL, {
+        accessToken: process.env.PRISMIC_ACCESS_TOKEN,
+    })
 }
 
 // Queries Prismic instance based on predicates, options and context
