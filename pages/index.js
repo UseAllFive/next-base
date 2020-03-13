@@ -15,15 +15,22 @@ const Index = ({ data = {} }) => {
             <ol>
                 <li>Create or login to your Prismic repo</li>
                 <li>Go to settings and get or generate your API key</li>
-                <li>Create a .env file in the root of this project</li>
-                <li>Update the /public/manifest.json so your app can be accessed offline</li>
-                <li>Add your prismic key there: PRISMIC_ACCESS_TOKEN=MY_KEY_HERE</li>
+                <li>
+                    Create a .env file in the root of this project:
+                    <ul>
+                        <li>Add your prismic key there: PRISMIC_ACCESS_TOKEN=MY_KEY_HERE</li>
+                        <li>(optional) Add a username: USERNAME=my_username</li>
+                        <li>(optional) Add a password: PASSWORD=my_password</li>
+                    </ul>
+                </li>
+
                 <li>
                     Go to /constants/prismic.js and update the PRISMIC_API_URL information there to point to your
                     Prismic repo
                 </li>
                 <li>Go to /constants/metadata.js and update the DEFAULT_METADATA there</li>
                 <li>Go to /constants/analytics.js and update your GA_TRACKING_ID</li>
+                <li>Update the /public/manifest.json so your app can be accessed offline</li>
                 <li>
                     Uncomment this getInitialProps function in this file and update as necessary to get data for your
                     project. Remember to also uncomment the appropriate imports too

@@ -9,6 +9,7 @@ const port = process.env.PORT || 5000
 const Cookies = require('cookies')
 const Prismic = require('prismic-javascript')
 const compression = require('compression')
+const basicAuth = require('./utils/basic-auth')
 const { linkResolver } = require('./utils/link-resolver')
 const { PRISMIC_API_URL } = require('./constants/prismic')
 
@@ -25,6 +26,12 @@ app.prepare()
     .then(() => {
         const server = express()
         server.use([compression(), requireHTTPS])
+
+        // Adds a password to the site
+        // if you add these env vars
+        if (process.env.USERNAME && process.env.PASSWORD) {
+            server.use(basicAuth)
+        }
 
         server.get('/preview', async (req, res) => {
             const { token } = req.query
