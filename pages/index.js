@@ -16,7 +16,7 @@ const Index = ({ data = {} }) => {
                 <li>Create or login to your Prismic repo</li>
                 <li>Go to settings and get or generate your API key</li>
                 <li>
-                    Create a .env file in the root of this project:
+                    Copy the env.sample file and rename it to ".env", and place it in the root of this project:
                     <ul>
                         <li>Add your prismic key there: PRISMIC_ACCESS_TOKEN=MY_KEY_HERE</li>
                         <li>(optional) Add a username: USERNAME=my_username</li>
