@@ -3,39 +3,48 @@
 import PrismicDOM from 'prismic-dom'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
+import { Box } from 'rebass/styled-components'
 import { linkResolver } from '../utils/link-resolver'
 
 const PrismicLink = (props) => {
     const { link, children } = props
-    const href = PrismicDOM.Link.url(link, linkResolver)
+    if (!link) {
+        return (
+            <Box as="a" className={props.className} sx={{ ...props.sx }}>
+                {children} <span className="ada-hidden">(opens in new window)</span>
+            </Box>
+        )
+    }
+    const linkIsString = typeof link === 'string'
+    const href = linkIsString ? link : PrismicDOM.Link.url(link, linkResolver)
     let target = {}
-    if (link.target) {
+    if (linkIsString || link.target) {
         target = {
             target: link.target,
             rel: 'noopener',
         }
     }
-    if (link.link_type === 'Document') {
+    if (linkIsString || link.link_type === 'Web') {
         return (
-            <Link href={`/page?uid=${link.uid}`} as={href}>
-                <a>{children}</a>
-            </Link>
+            <Box as="a" className={props.className} href={href} {...target} sx={{ ...props.sx }}>
+                {children} <span className="ada-hidden">(opens in new window)</span>
+            </Box>
         )
     }
     return (
-        <a href={href} {...target}>
-            {children} ↗&#xFE0E; <span className="ada-hidden">(opens in new window)</span>
-        </a>
+        <Link className={props.className} href={`/page?uid=${link.uid}`} as={href} passHref>
+            <Box as="a" sx={{ ...props.sx }}>
+                {children}
+            </Box>
+        </Link>
     )
 }
 
 PrismicLink.propTypes = {
-    link: PropTypes.shape({
-        target: PropTypes.string,
-        link_type: PropTypes.string,
-        uid: PropTypes.string,
-    }),
+    className: PropTypes.string,
+    link: PropTypes.any,
     children: PropTypes.any,
+    sx: PropTypes.any,
 }
 
 export { PrismicLink }

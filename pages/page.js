@@ -3,7 +3,7 @@ import { Box, Heading, Text } from 'rebass/styled-components'
 // import Prismic from 'prismic-javascript'
 // import { query } from '../utils/prismic'
 
-const Index = ({ data = {} }) => {
+const Page = ({ data = {} }) => {
     const { results } = data
     return (
         <>
@@ -45,18 +45,19 @@ const Index = ({ data = {} }) => {
     )
 }
 
-// Index.getInitialProps = async (ctx) => {
+// Page.getInitialProps = async (ctx) => {
+//     const { uid = 'home' } = ctx.query
 //     // Replace with your query
 //     const data = await query({
-//         predicates: Prismic.Predicates.at('my.page.uid', 'home'),
+//         predicates: Prismic.Predicates.at('my.page.uid', uid),
 //         context: ctx,
 //     })
 
 //     return { data }
 // }
 
-Index.propTypes = {
+Page.propTypes = {
     data: PropTypes.object,
 }
 
-export default Index
+export default Page

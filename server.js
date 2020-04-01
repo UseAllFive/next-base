@@ -9,6 +9,7 @@ const port = process.env.PORT || 5000
 const Cookies = require('cookies')
 const Prismic = require('prismic-javascript')
 const compression = require('compression')
+const { parse } = require('url')
 const basicAuth = require('./utils/basic-auth')
 const { linkResolver } = require('./utils/link-resolver')
 const { PRISMIC_API_URL } = require('./constants/prismic')
@@ -54,8 +55,23 @@ app.prepare()
             app.serveStatic(req, res, filePath)
         })
 
+        server.get(['/manifest.json', '/assets/*'], (req, res) => handle(req, res))
+
         server.all('*', (req, res) => {
-            return handle(req, res)
+            const parsedUrl = parse(req.url, true)
+            const { pathname } = parsedUrl
+            // Match all paths that start with /_next/
+            const nextFilesRegex = RegExp('^/_next')
+            // Handle all internal links the default way and all other links as pages
+            if (nextFilesRegex.test(pathname)) {
+                return handle(req, res)
+            }
+            const nextJsPage = '/page'
+            // Remove first blank in array
+            const paths = pathname.split('/').slice(1)
+            // Use undefined if not path, otherwise use last path in array
+            const lastPath = paths[0].length === 0 ? undefined : paths[paths.length - 1]
+            app.render(req, res, nextJsPage, { uid: lastPath })
         })
 
         server.listen(port, (err) => {
