@@ -4,3 +4,4 @@ singleQuote: true
 arrowParens: 'always'
 trailingComma: 'es5'
 printWidth: 120
+jsxBracketSameLine: true
