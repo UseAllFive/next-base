@@ -47,7 +47,7 @@ export default class MyDocument extends Document {
                     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                     <meta name="robots" content="noindex, nofollow" />
                     <link rel="manifest" href="/manifest.json" />
-                    <link rel="apple-touch-icon" href="/images/icons-192.png" />
+                    <link rel="apple-touch-icon" href="/assets/images/icons-192.png" />
                     <meta name="theme-color" content="#000000" />
                     {/* eslint-disable-next-line react/no-danger */}
                     <script dangerouslySetInnerHTML={this.setPrismic()} />

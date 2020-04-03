@@ -55,7 +55,7 @@ app.prepare()
             app.serveStatic(req, res, filePath)
         })
 
-        server.get(['/manifest.json', '/assets/*'], (req, res) => handle(req, res))
+        server.get(['/manifest.json', '/favicon.ico', '/assets/*'], (req, res) => handle(req, res))
 
         server.all('*', (req, res) => {
             const parsedUrl = parse(req.url, true)
