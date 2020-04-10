@@ -7,10 +7,10 @@ import { Box } from 'rebass/styled-components'
 import { linkResolver } from '../utils/link-resolver'
 
 const PrismicLink = (props) => {
-    const { link, children } = props
+    const { link, children, className } = props
     if (!link) {
         return (
-            <Box as="a" className={props.className} sx={{ ...props.sx }}>
+            <Box as="a" className={className} sx={{ ...props.sx }}>
                 {children} <span className="ada-hidden">(opens in new window)</span>
             </Box>
         )
@@ -20,19 +20,19 @@ const PrismicLink = (props) => {
     let target = {}
     if (linkIsString || link.target) {
         target = {
-            target: link.target,
+            target: link.target || '_blank',
             rel: 'noopener',
         }
     }
     if (linkIsString || link.link_type === 'Web') {
         return (
-            <Box as="a" className={props.className} href={href} {...target} sx={{ ...props.sx }}>
+            <Box as="a" className={className} href={href} {...target} sx={{ ...props.sx }}>
                 {children} <span className="ada-hidden">(opens in new window)</span>
             </Box>
         )
     }
     return (
-        <Link className={props.className} href={`/page?uid=${link.uid}`} as={href} passHref>
+        <Link href={`/page?uid=${link.uid}`} as={href} passHref>
             <Box as="a" sx={{ ...props.sx }}>
                 {children}
             </Box>
