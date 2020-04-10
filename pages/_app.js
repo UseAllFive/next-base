@@ -15,8 +15,8 @@ import * as gtag from '../utils/gtag'
 
 NProgress.configure({ showSpinner: false })
 Router.events.on('routeChangeStart', () => NProgress.start())
-Router.events.on('routeChangeComplete', () => {
-    gtag.pageView()
+Router.events.on('routeChangeComplete', (url) => {
+    gtag.pageView(url)
     NProgress.done()
 })
 Router.events.on('routeChangeError', () => NProgress.done())

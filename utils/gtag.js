@@ -5,7 +5,7 @@
 import { GA_TRACKING_ID } from '../constants/analytics'
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
-export const pageview = (url) => {
+export const pageView = (url) => {
     if (process.env.NODE_ENV === 'production') {
         setTimeout(() => {
             window.gtag('config', GA_TRACKING_ID, {
