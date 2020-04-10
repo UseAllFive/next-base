@@ -11,10 +11,14 @@ import { ThemeProvider } from 'styled-components'
 import t from 'typy'
 import { theme } from '../styles/theme'
 import { Metadata } from '../components/metadata'
+import * as gtag from '../utils/gtag'
 
 NProgress.configure({ showSpinner: false })
 Router.events.on('routeChangeStart', () => NProgress.start())
-Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeComplete', () => {
+    gtag.pageView()
+    NProgress.done()
+})
 Router.events.on('routeChangeError', () => NProgress.done())
 
 export default class MyApp extends App {
