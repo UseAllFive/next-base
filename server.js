@@ -44,7 +44,6 @@ app.prepare()
             const cookies = new Cookies(req, res)
             cookies.set(Prismic.previewCookie, token, {
                 maxAge: 30 * 60 * 1000,
-                path: '/',
                 httpOnly: false,
             })
             res.redirect(302, url)
