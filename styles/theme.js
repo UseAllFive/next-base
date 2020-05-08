@@ -18,6 +18,10 @@ const theme = {
     },
     colors,
     sizes: [1284],
+    gridStyles: {
+        gridTemplateColumns: 'repeat(12, 1fr)',
+        gap: 20,
+    },
 }
 
 export { theme }
