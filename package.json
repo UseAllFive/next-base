@@ -49,7 +49,7 @@
         "prop-types": "^15.7.2",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
-        "react-global-grid": "^1.0.0",
+        "react-global-grid": "^1.1.0",
         "rebass": "^4.0.7",
         "serialize-javascript": "^3.0.0",
         "styled-components": "^5.1.0",
