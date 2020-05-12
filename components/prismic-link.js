@@ -4,7 +4,7 @@ import PrismicDOM from 'prismic-dom'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
 import { Box } from 'rebass/styled-components'
-import { linkResolver } from '../utils/link-resolver'
+import { linkResolver } from 'utils/link-resolver'
 
 const PrismicLink = (props) => {
     const { link, children, className } = props

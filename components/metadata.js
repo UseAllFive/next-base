@@ -3,7 +3,7 @@
 
 import Head from 'next/head'
 import PropTypes from 'prop-types'
-import { DEFAULT_METADATA } from '../constants/metadata'
+import { DEFAULT_METADATA } from 'constants/metadata'
 
 const Metadata = ({ title, description, image }) => {
     const metaTitle = title

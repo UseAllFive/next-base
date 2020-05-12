@@ -43,5 +43,11 @@ module.exports = {
         'object-curly-spacing': ['error', 'always'],
         semi: ['warn', 'never'],
     },
-    settings: {},
+    settings: {
+        'import/resolver': {
+            node: {
+                moduleDirectory: ['node_modules', '.'],
+            },
+        },
+    },
 }

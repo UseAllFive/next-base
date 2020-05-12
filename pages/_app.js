@@ -1,17 +1,17 @@
 import '@babel/polyfill'
-import '../polyfills/assign'
+import 'polyfills/assign'
 import 'normalize.css'
 import 'nprogress/nprogress.css'
-import '../styles/global.css'
+import 'styles/global.css'
 import React from 'react'
 import App from 'next/app'
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import { ThemeProvider } from 'styled-components'
 import t from 'typy'
-import { theme } from '../styles/theme'
-import { Metadata } from '../components/metadata'
-import * as gtag from '../utils/gtag'
+import { theme } from 'styles/theme'
+import { Metadata } from 'components/metadata'
+import * as gtag from 'utils/gtag'
 
 NProgress.configure({ showSpinner: false })
 Router.events.on('routeChangeStart', () => NProgress.start())
@@ -67,4 +67,11 @@ export default class MyApp extends App {
             </>
         )
     }
+}
+
+// Will be called once for every metric that has to be reported.
+// eslint-disable-next-line no-unused-vars
+export function reportWebVitals(metric) {
+    // These metrics can be sent to any analytics service
+    // console.log(metric)
 }
