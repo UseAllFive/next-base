@@ -1,12 +1,28 @@
 import PropTypes from 'prop-types'
+import Link from 'next/link'
 import { Box, Heading, Text } from 'rebass/styled-components'
+import { MotionBox } from '../components/motion-box'
 // import Prismic from 'prismic-javascript'
 // import { query } from '../utils/prismic'
 
 const Page = ({ data = {} }) => {
     const { results } = data
     return (
-        <>
+        <MotionBox
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5, stiffness: 100, ease: 'easeInOut' }}>
+            <Link href="/page?uid=home" as="/">
+                <Box as="a" href="/">
+                    Home
+                </Box>
+            </Link>
+            <Link href="/page?uid=about" as="/about">
+                <Box as="a" href="/about">
+                    About
+                </Box>
+            </Link>
             <Heading>Getting started with Next Base:</Heading>
             <Text>
                 This is a starter kit for projects that wish to utilize Prismic, NextJS, and Express. Below are the
@@ -41,7 +57,7 @@ const Page = ({ data = {} }) => {
                 </li>
             </ol>
             <Box as="pre">{JSON.stringify(results, null, 2)}</Box>
-        </>
+        </MotionBox>
     )
 }
 

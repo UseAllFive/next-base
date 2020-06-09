@@ -9,6 +9,7 @@ import NProgress from 'nprogress'
 import Router from 'next/router'
 import { ThemeProvider } from 'styled-components'
 import t from 'typy'
+import { AnimatePresence } from 'framer-motion'
 import { theme } from 'styles/theme'
 import { Metadata } from 'components/metadata'
 import * as gtag from 'utils/gtag'
@@ -33,7 +34,7 @@ export default class MyApp extends App {
     }
 
     render() {
-        const { Component, pageProps } = this.props
+        const { Component, pageProps, router } = this.props
 
         // Get metadata information
         let metaDescription
@@ -61,7 +62,9 @@ export default class MyApp extends App {
                 <Metadata title={metaTitle} description={metaDescription} image={metaImageURL} />
                 <ThemeProvider theme={theme}>
                     <main id="ada-content-begin">
-                        <Component {...pageProps} />
+                        <AnimatePresence exitBeforeEnter>
+                            <Component {...pageProps} key={router.asPath} />
+                        </AnimatePresence>
                     </main>
                 </ThemeProvider>
             </>
