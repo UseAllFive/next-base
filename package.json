@@ -35,7 +35,7 @@
         "cookies": "^0.8.0",
         "eslint-import-resolver-node": "^0.3.3",
         "express": "^4.17.1",
-        "express-jwt": "^5.3.3",
+        "express-jwt": "^6.0.0",
         "express-paginate": "^1.0.0",
         "express-session": "^1.17.1",
         "framer-motion": "^1.11.0",
