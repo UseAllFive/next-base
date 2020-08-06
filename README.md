@@ -1,3 +1,9 @@
+**DEPRECATION NOTICE**
+
+This project is no longer being maintained. Check out https://github.com/UseAllFive/next-prismic-base for the latest.
+
+-----
+
 # Next Base
 
 Starter kit for a [Prismic](https://prismic.io/), [NextJS](https://nextjs.org) & [Express](https://expressjs.com/) tech stack. Comes complete with Prismic Preview functionality built in. Use this kit if that stack makes sense for your project.
