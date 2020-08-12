@@ -52,7 +52,7 @@
         "react-dom": "^16.13.1",
         "react-global-grid": "^1.1.0",
         "rebass": "^4.0.7",
-        "serialize-javascript": "^3.0.0",
+        "serialize-javascript": "^3.1.0",
         "styled-components": "^5.1.0",
         "styled-system": "^5.1.5",
         "typy": "^3.3.0"
